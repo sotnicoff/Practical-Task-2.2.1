@@ -23,10 +23,16 @@ public class CarDAO {
     }
 
     public List<Car> index() {
+        if (cars == null) {
+            return null;
+        }
         return cars;
     }
 
     public List<Car> showCars(int count) {
+        if (count >= 5 || count < 0 || count > cars.size()) {
+            return cars;
+        }
         return cars.stream().limit(count).collect(Collectors.toList());
     }
 }
